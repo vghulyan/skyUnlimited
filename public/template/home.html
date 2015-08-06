@@ -1,0 +1,65 @@
+<div class="container">
+	<h1>The Sky is unlimited</h1>
+	<div class="row">
+  		<div class="col-xs-6 col-md-4"><button class="btn btn-default" type="submit" ng-click="readData()">Refresh</button></div>
+  		<div class="col-xs-6 col-md-4">
+  			<label>To JSON</label>
+    		<input type="checkbox" ng-model="checkboxModel.toJSON">
+    	</div>
+    	<div class="col-xs-6 col-md-4">
+    		<p>{{ msgtxt }}</p>
+    	</div>
+	</div>
+
+
+	<div ng-show="statementDue">
+
+
+		<h4 ng-show="statementDue">Statement Due : {{statementDue}}</h4>
+		<h4 ng-show="statementGenerated">Statement Generated : {{statementGenerated}}</h4>
+
+		<div ng-show="callCharges">
+			<h2>Call Charge - Total: {{callChargesTotal}}</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<td>Called</td>
+						<td>Cost</td>
+						<td>Duration</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="callCharge in callCharges">
+						<td>{{callCharge.called}}</td><td>{{callCharge.cost}}</td><td>{{callCharge.duration}}</td>
+					</tr>
+				</tbody>
+				
+			</table>
+		</div>
+
+		<div ng-show="subscriptions">
+			<h2>Subscriptions - Total: {{packageTotal}}</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<td>Cost</td>
+						<td>Name</td>
+						<td>Type</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="subscription in subscriptions">
+						<td>{{subscription.cost}}</td><td>{{subscription.name}}</td><td>{{subscription.type}}</td>
+					</tr>
+				</tbody>
+				
+			</table>
+		</div>
+
+
+	</div>
+</div>
+<div ng-show="checkboxModel.toJSON">
+	<h1>JSON Data</h1>
+	{{ theJSONData }}
+</div>
